@@ -8,6 +8,7 @@ const Message = require('./models/Message');
 require('dotenv').config();
 const app = express();
 const server =http.createServer(app);
+const path = require('path');
 
 const io = socketIo(server,{cors:{origin:'*'}});
 
@@ -15,11 +16,19 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Fallback to index.html for SPA
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+});
+
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
 
-// Enhanced private chat logic
+// Enhanced private chat logi
 const onlineUsers = {};
 const User = require('./models/User');
 
