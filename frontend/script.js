@@ -8,7 +8,7 @@ let conversations = {}; // Store conversations per user
 function register() {
   const user = document.getElementById('username').value;
   const pass = document.getElementById('password').value;
-  fetch('http://localhost:5000/api/auth/register', {
+  fetch('https://your-app-name.onrender.com/api/auth/register', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: user, password: pass })
   })
@@ -19,7 +19,7 @@ function register() {
 function login() {
   const user = document.getElementById('username').value;
   const pass = document.getElementById('password').value;
-  fetch('http://localhost:5000/api/auth/login', {
+  fetch('https://your-app-name.onrender.com/api/auth/login', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: user, password: pass })
   })
@@ -38,7 +38,7 @@ function login() {
 }
 
 function startChat() {
-  socket = io('http://localhost:5000');
+  socket = io('https://your-app-name.onrender.com');
   socket.emit('loginUser', username);
 
 
