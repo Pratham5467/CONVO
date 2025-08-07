@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CONVO</title>
+        <link rel="stylesheet" href="style.css"/>    
+    </head>
+    <body>
+        <div id="auth">
+            <input id="username" type="text" placeholder="Username" />
+            <input id="password" type="password" placeholder="Password" />
+            <div class="auth-buttons">
+                <button onclick="register()">Register</button>
+                <button onclick="login()">Login</button>
+            </div>
+            <p id="authMsg"></p>
+        </div>
+        <div id="chat" style="display:none;">
+            <div id="sidebar">
+                <h3>💬 Convo</h3>
+                <div class="search-container">
+                    <input id="userSearch" type="text" placeholder="Search..." />
+                    <div id="searchResults"></div>
+                </div>
+                <div class="online-section">
+                    <h4>Online:</h4>
+                    <ul id="userList"></ul>
+                </div>
+            </div>
+            <div id="mainChat">
+                <div id="chatHeader">
+                    <span id="currentChatUser">Select a user to start chatting</span>
+                </div>
+                <div id="messages"></div>
+                <div class="input-container">
+                    <input id="msgInput" placeholder="Type your message here..." autocomplete="off"/>
+                    <div class="chat-buttons">
+                        <button onclick="sendMsg()">Send</button>
+                        <button onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.socket.io/4.7.3/socket.io.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
